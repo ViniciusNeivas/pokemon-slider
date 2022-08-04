@@ -22,11 +22,13 @@ function mostrarCartao(indiceCartao) {
 // Passo 2 - Identificar o clique do usuário na seta avançar
 btnAvancar.addEventListener('click',
     function () {
-        if (cartaoAtual === cartoes.length - 1) return
-
+        if (cartaoAtual === cartoes.length - 1) {
+            cartaoAtual = 0;
+        } else {
+            cartaoAtual++;
+        }
+        
         esconderCartaoSelecionado();
-
-        cartaoAtual++;
 
         // Passo 3 - Fazer aparecer o próximo card da lista
         mostrarCartao(cartaoAtual);
@@ -42,11 +44,16 @@ const btnVoltar = document.getElementById('btn-voltar');
 
 btnVoltar.addEventListener('click',
     function () {
-        if (cartaoAtual === 0) return;
+        if (cartaoAtual === 0){
+            cartaoAtual = cartoes.length - 1
+        } else {
+            cartaoAtual--;
+
+        };
 
         esconderCartaoSelecionado();
 
-        cartaoAtual--;
+        // cartaoAtual--;
 
         // Passo 3 - Fazer aparecer o próximo card da lista
         mostrarCartao(cartaoAtual);
